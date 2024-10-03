@@ -3,13 +3,16 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
 from page_store.locators import StoreLocators
 from data.user_data import UserData
+from selenium.webdriver.chrome.options import Options
 
 
 class StorePage:
 
     def __init__(self):
+        options = Options()
+        options.add_argument('--headless')
         self.locators = StoreLocators()
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome(options=options)
         self.data = UserData()
 
     def open_browser(self):
