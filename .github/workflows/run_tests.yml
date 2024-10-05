@@ -1,7 +1,17 @@
 name: Automated tests
 
 on:
-  push
+  workflow_dispatch:
+    inputs:
+      deployment_target:
+        description: Choose target
+        required: true
+        default:
+        type: choice
+        options:
+          - fist test
+          - second test
+          
 
 jobs:
   tests:
@@ -18,5 +28,9 @@ jobs:
         run: sudo apt-get install google-chrome-stable
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Run tests
-        run: pytest
+      - name: first test
+        if: "github.event.inputs.deployment_target == 'first_test"
+        run: pytest test_store.py::TestStore::test_store
+      - name: second test
+        if: "github.event.inputs.deployment_target == 'second_test"
+        run: pytest test_store.py::TestStore::test_store_2

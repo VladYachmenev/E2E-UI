@@ -18,3 +18,9 @@ class TestStore:
         store_page.click_finish_button()
         finally_inscriptions = store_page.check_finally_inscription()
         assert finally_inscriptions == "Thank you for your order!"
+
+    def test_store_2(self):
+        store_page = StorePage()
+        store_page.open_browser()
+
+
