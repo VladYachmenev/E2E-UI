@@ -9,8 +9,8 @@ on:
         default:
         type: choice
         options:
-          - fist test
-          - second test
+          - fist_test
+          - second_test
           
 
 jobs:
